@@ -1,0 +1,72 @@
+body {
+    /*background-image: url("https://www.developertown.com/wp-content/uploads/2015/08/shutterstock_271989407-reversed.png");*/
+    background-image: url(../img/backgroundy-min.png);
+    background-position: center;
+    background-size: cover;
+}
+
+img,
+h1 {
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.pic,
+.title {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(250, 235, 215, 0.50);
+}
+
+.label {
+    font-weight: bold;
+}
+
+.create-update-form {
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(250, 235, 215, 0.50);
+    /*width: 70%;*/
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.mother {
+    width: 100%;
+    height: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left {
+    width: 40%;
+}
+
+.right {
+    width: 40%;
+}
+
+.hide {
+    display: none;
+}
