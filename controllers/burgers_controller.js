@@ -3,21 +3,27 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
-var burger = require("../models/burger.js");
+var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-    burger.all(function(data) {
-        var hbsObject = {
-            burgers: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+    //     db.burger.all(function(data) {
+    //         var hbsObject = {
+    //             burgers: data
+    //         };
+    //         console.log(hbsObject);
+    //         res.render("index", hbsObject);
+    //     });
+    // });
+    db.burger.findAll({}).
+    then(function(dbBurger) {
+        // We have access to the todos as an argument inside of the callback function
+        res.json(dbBurger);
     });
 });
 
 router.post("/", function(req, res) {
-    burger.create([
+    db.burger.create([
         "burger_name", "devoured"
     ], [
         req.body.burger_name, req.body.devoured
@@ -31,7 +37,7 @@ router.put("/:id", function(req, res) {
 
     console.log("condition", condition);
 
-    burger.update({
+    db.burger.update({
         devoured: req.body.devoured
     }, condition, function() {
         res.redirect("/");
@@ -41,7 +47,7 @@ router.put("/:id", function(req, res) {
 router.delete("/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
-    burger.delete(condition, function() {
+    db.burger.delete(condition, function() {
         res.redirect("/");
     });
 });
