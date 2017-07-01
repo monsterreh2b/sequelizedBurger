@@ -16,19 +16,34 @@ router.get("/", function(req, res) {
     //     });
     // });
     db.burger.findAll({}).
-    then(function(dbBurger) {
+    then(function(data) {
         // We have access to the todos as an argument inside of the callback function
-        res.json(dbBurger);
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+
     });
 });
 
 router.post("/", function(req, res) {
-    db.burger.create([
-        "burger_name", "devoured"
-    ], [
-        req.body.burger_name, req.body.devoured
-    ], function() {
-        res.redirect("/");
+    db.burger.create(
+        // [
+        //         "burger_name", "devoured"
+        //     ], [
+        //         req.body.burger_name, req.body.devoured
+        //     ], function() {
+        //         res.redirect("/");
+        //     });
+        // });
+        {
+            burger_name: req.body.burger_name,
+        }).then(function(data) {
+        console.log("added burger");
+        res.redirect('/');
+    }).catch(function(err) {
+        console.log(err);
     });
 });
 
@@ -38,19 +53,24 @@ router.put("/:id", function(req, res) {
     console.log("condition", condition);
 
     db.burger.update({
-        devoured: req.body.devoured
-    }, condition, function() {
+        //     devoured: req.body.devoured
+        // }, condition, function() {
+        devoured: 1,
+        burger_id: req.params.id
+    }, {
+        where: { id: req.params.id }
+    }).then(function(data) {
         res.redirect("/");
     });
 });
 
-router.delete("/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
+// router.delete("/:id", function(req, res) {
+//     var condition = "id = " + req.params.id;
 
-    db.burger.delete(condition, function() {
-        res.redirect("/");
-    });
-});
+//     db.burger.delete(condition, function() {
+//         res.redirect("/");
+//     });
+// });
 
 // Export routes for server.js to use.
 module.exports = router;
