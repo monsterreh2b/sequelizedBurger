@@ -23,7 +23,7 @@ var mysql = require("mysql");
 var connection;
 
 if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection("mysql://oumzxwx7w0a71g2n:y7rnki1l1kwve75e@b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/nu8n0aokaf88xwp3");
+    connection = mysql.createConnection("mysql://rjdlm8nj9gcn2r86:achjj0mh5sx2nvzv@ko86t9azcob3a2f9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/nzwmphdgoouubuni");
 } else {
     connection = mysql.createConnection({
         host: "localhost",
