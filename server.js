@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 
 var db = require("./models");
 
-var port = process.env.port || 3000;
+var port = process.env.port || 3306;
 
 var app = express();
 
